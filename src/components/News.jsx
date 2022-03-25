@@ -27,8 +27,8 @@ export const News = ({ amount }) => {
           }
         >
           <option value='Cryptocurrency'>Cryptocurrency</option>
-          {cryptoData?.data?.coins.map((coin, i) => (
-            <option key={i} value={coin.name}>
+          {cryptoData?.data?.coins.map((coin) => (
+            <option key={coin.uuid} value={coin.name}>
               {coin.name}
             </option>
           ))}

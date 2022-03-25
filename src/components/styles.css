@@ -119,6 +119,15 @@ body {
   margin: 15px 0px 0px 10px;
 }
 
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.link:hover {
+  color: inherit;
+}
+
 .card-container {
   min-height: 200px;
   min-width: 150px;
@@ -249,4 +258,61 @@ body {
 
 .news-card-bottom__date {
   white-space: nowrap;
+}
+
+.coin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.coin-container__logo {
+  margin-right: 25px;
+  margin-bottom: 3px;
+}
+
+.coin-info-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 75vw;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.coin-info-container div {
+  background-color: lightblue;
+  border: 1px solid black;
+}
+
+.coin-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.coin-statistics-container {
+  display: flex;
+  width: 20vw;
+}
+
+.coin-statistics-container__img,
+.coin-statistics-container__value {
+  display: flex;
+  justify-content: center;
+  width: 25vw;
+}
+
+.coin-statistics-container__title {
+  display: flex;
+  width: 50vw;
+  justify-content: flex-start;
+}
+
+.color-change__green {
+  color: green;
+}
+
+.color-change__red {
+  color: red;
 }

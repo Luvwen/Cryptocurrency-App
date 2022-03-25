@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import millify from 'millify';
 import { useGetCryptosQuery } from '../services/cryptoApi';
+import { Link } from 'react-router-dom';
 
 export const Cryptos = ({ amount }) => {
   const cryptoAmount = amount ? 10 : 100;
@@ -15,7 +16,6 @@ export const Cryptos = ({ amount }) => {
     );
     setCoins(filteredData);
   }, [cryptoSearch, cryptoList]);
-
   if (isFetching) return 'Loading...';
 
   return (
@@ -33,25 +33,34 @@ export const Cryptos = ({ amount }) => {
         ''
       )}
       <div className='cryptos-container'>
-        {coins?.map((coin, i) => (
-          <div className='card-container' key={i}>
-            <div className='card' style={{ backgroundColor: `${coin.color}` }}>
-              <p className='card__title'>
-                {coin.rank}. {coin.name}
-              </p>
-              <img src={coin.iconUrl} alt={coin.name} className='card__img' />
+        {coins?.map((coin) => (
+          <Link
+            to={`/cryptoinfo/${coin.uuid}`}
+            className='link'
+            key={coin.uuid}
+          >
+            <div className='card-container'>
+              <div
+                className='card'
+                style={{ backgroundColor: `${coin.color}` }}
+              >
+                <p className='card__title'>
+                  {coin.rank}. {coin.name}
+                </p>
+                <img src={coin.iconUrl} alt={coin.name} className='card__img' />
+              </div>
+              <div className='card__separator' />
+              <div className='card-info'>
+                <p className='card-info__stats'>Price: {millify(coin.price)}</p>
+                <p className='card-info__stats'>
+                  Market Cap: {millify(coin.marketCap)}
+                </p>
+                <p className='card-info__stats'>
+                  Daily Change: {millify(coin.change)}%
+                </p>
+              </div>
             </div>
-            <div className='card__separator' />
-            <div className='card-info'>
-              <p className='card-info__stats'>Price: {millify(coin.price)}</p>
-              <p className='card-info__stats'>
-                Market Cap: {millify(coin.marketCap)}
-              </p>
-              <p className='card-info__stats'>
-                Daily Change: {millify(coin.change)}%
-              </p>
-            </div>
-          </div>
+          </Link>
         ))}
       </div>
     </>
